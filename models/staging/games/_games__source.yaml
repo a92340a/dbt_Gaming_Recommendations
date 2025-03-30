@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: gaming
+  - name: games
     description: BigQuery gaming recommendation dataset.
     database: tw-rd-de-finn 
     schema: game_recommendations_on_steam
@@ -38,13 +38,15 @@ sources:
           tests:
             - unique
             - not_null
+        - name: rating
+          desciption: Game rating category
+          tests:
+          - accepted_values:
+              values: ["Negative", "Very Negative", "Overwhelmingly Negative", "Mostly Negative", "Mixed", "Mostly Positive", "Very Positive", "Positive", "Overwhelmingly Positive"]
         - name: positive_ratio
           description: Ratio of positive feedbacks.
         - name: user_reviews
           description: Amount of user reviews availble on the Steam page.
-          tests:
-          - accepted_values:
-              values: ["Negative", "Very Negative", "Overwhelmingly Negative", "Mostly Negative", "Mixed", "Mostly Positive", "Very Positive", "Positive", "Overwhelmingly Positive"]
       - name: recommendations
         description: User reviews with product ID to user ID relations.
         columns:

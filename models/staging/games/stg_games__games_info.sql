@@ -6,5 +6,5 @@ select
     mac as support_mac,
     linux as support_linux,
     steam_deck
-from {{ source('gaming', 'games_info') }} 
+from {{ source('games', 'games_info') }} 
 
