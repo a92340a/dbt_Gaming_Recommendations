@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_games
+  - name: dim_users
+  - name: fct_recommendations
+    columns: 
+      - name: user_id
+        tests:
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+      - name: app_id
+        tests:
+          - relationships:
+              to: ref('dim_games')
+              field: app_id
