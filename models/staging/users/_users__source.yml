@@ -14,4 +14,7 @@ sources:
           tests:
             - unique
             - not_null
-      
+        - name: products
+          description: Number of games/add-ons purchased by the user
+        - name: reviews
+          description: Number of reviews published
