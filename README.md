@@ -6,7 +6,7 @@ To find the gaming recommendation insights, building a data transformation pipel
 ## Data Source
 The source from [Kaggle dataset](https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam) is restructured by this project to mimic the OLTP (Online Transactional Processing) database.
 Overall, it contains detailed information about games, user profiles and over 41 million user recommendations (reviews) from a Steam Store.
-
+```
 Sources
 ├── games
 │   ├── games_info
@@ -17,11 +17,11 @@ Sources
 │   ├── recommendations
 ├── users
 │   ├── users
-
+```
 
 ## Data Pipeline and Lineage Overview 
 You can know more about the pipeline flow of ETL (Extract, Transform, Load) which follows the recommendation of dbt's offical documents about modular data modeling technique.
-![game_logical_erd](snapshot/games_logical_ERD.png)
+![game_logical_erd](snapshots/games_logical_ERD.png)
 
 ## Data Warehouse Modeling
 The following model designed with Star Schema (Kimball) methodalogy includes dimension tables: `dim_users`, `dim_games` and fact table `fct_recommendations`.
