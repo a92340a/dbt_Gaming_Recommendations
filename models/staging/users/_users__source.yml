@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: users
+    description: BigQuery gaming recommendation dataset.
+    database: tw-rd-de-finn 
+    schema: game_recommendations_on_steam
+    tables:
+      - name: users
+        description: Users registered on Steam.
+        columns: 
+        - name: user_id
+          description: Primary key for users.
+          tests:
+            - unique
+            - not_null
+        - name: products
+          description: Number of games/add-ons purchased by the user
+        - name: reviews
+          description: Number of reviews published
