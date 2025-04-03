@@ -1,7 +1,7 @@
 # Game Recommendations on Steam
 
 ## Purpose
-To find the gaming recommendation insights, building a data transformation pipeline with dbt.
+To find the game recommendations insights, designing a star schema data model and building a data transformation pipeline with dbt.
 
 ## Data Source
 The source from [Kaggle dataset](https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam) is restructured by this project to mimic the OLTP (Online Transactional Processing) database.
@@ -20,14 +20,18 @@ Sources
 ```
 
 ## Data Pipeline and Lineage Overview 
-You can know more about the pipeline flow of ETL (Extract, Transform, Load) which follows the recommendation of dbt's offical documents about modular data modeling technique.
+You can know more about the pipeline flow of ETL (Extract, Transform, Load) which follows the recommendations of dbt's offical documents about modular data modeling technique.
+A Slowly Changing Dimension (SCD) Type 2 is implemented on `stg_games__games_info` to demonstrate how to retain all historical values from the sources.
+
 ![game_logical_erd](snapshots/games_logical_ERD.png)
 
 ## Data Warehouse Modeling
-The following model designed with Star Schema (Kimball) methodalogy includes dimension tables: `dim_users`, `dim_games` and fact table `fct_recommendations`.
-- `dim_users`: a table of user profiles' public information, such as the number of purchased products and reviews published.
-- `dim_games`: a table of games (or add-ons) information on ratings, pricing in US dollars $, release date, descriptions, tags, etc.
-- `fct_recommendations`: a table of user reviews which reveal whether the user recommends a product. The table represents a many-many relation between a game entity and a user entity.
+The following model is designed using the Star Schema (Kimball) methodology and includes dimension tables: `dim_users`, `dim_games` and `dim_tags`, and a fact table `fct_recommendations`.
+- `dim_users`: A table containing public user profile information, such as the number of purchased products and published reviews.
+- `dim_games` and `dim_tags`: One table contains game-related information, including ratings, pricing in US dollars ($), release dates, descriptions, and tags. The other table stores tags associated with games.
+- `fct_recommendations`: A table containing user reviews that indicate whether a user recommends a gmae. This table represents a many-to-many relationship between game entities and user entities.
+
+![game_star_schema_modeling](snapshots/games_star_schema.png)
 
 ## How it works
 Try running the following commands:
