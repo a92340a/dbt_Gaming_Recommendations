@@ -8,6 +8,6 @@ select
     steam_deck,
     "2025-03-31" AS start_date,
     NULL AS end_date,
-    "Y" AS current_flag
+    CASE WHEN end_date IS NULL THEN "Y" ELSE "N" AS current_flag
 from {{ source('games', 'games_info') }} 
 

@@ -7,4 +7,4 @@ select
     hours,
     helpful AS num_of_helpful,
     funny AS num_of_funny,
-from {{ source('recommend', 'recommendations') }}
+from {{ source('games', 'recommendations') }}
