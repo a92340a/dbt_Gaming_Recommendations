@@ -37,16 +37,15 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   gaming:
-    # Applies to all files under models/example/
     staging:
-      materialized: view
-      location: asia-east1
-      schema: game_recommendations_staging
-      tags: 
+      +materialized: view
+      +location: asia-east1
+      +schema: game_recommendations_staging
+      +tags: 
         - "staging"
     marts:
-      materialized: table
-      location: asia-east1
-      schema: game_recommendations_marts
-      tags: 
+      +materialized: table
+      +location: asia-east1
+      +schema: game_recommendations_marts
+      +tags: 
         - "marts"

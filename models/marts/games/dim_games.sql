@@ -6,7 +6,7 @@ SELECT
     i.support_win,	
     i.support_mac,
     i.support_linux,
-    CASE WHEN i.support_win + i.support_mac + i.support_linux >= 2 THEN true ELSE false END AS is_cross_platform,
+    CASE WHEN CAST(i.support_win AS INT) + CAST(i.support_mac AS INT) + CAST(i.support_linux AS INT) >= 2 THEN true ELSE false END AS is_cross_platform,
     i.steam_deck,
     p.price_final,
     p.price_original,
