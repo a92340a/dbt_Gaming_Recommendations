@@ -47,3 +47,11 @@ sources:
           description: Ratio of positive feedbacks.
         - name: user_reviews
           description: Amount of user reviews availble on the Steam page.
+      - name: recommendations
+        description: User reviews with game (app) ID to user ID relations.
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - review_id
+                - app_id
+                - user_id
