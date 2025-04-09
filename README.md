@@ -13,7 +13,6 @@ Sources
 │   ├── games_metadata
 │   ├── games_pricing
 │   ├── games_rating
-├── recommend
 │   ├── recommendations
 ├── users
 │   ├── users
